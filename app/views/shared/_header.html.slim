@@ -6,11 +6,18 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="#" Fork and Pork
+      = link_to root_path, class: 'navbar-brand', style: 'padding-top: 7px;' do
+        = image_tag 'fork-pork.png', class: 'img-circle', style: 'display: inline-block; height: 100%;'
+        h4 style="display: inline-block" Fork and Pork
     #navbar.collapse.navbar-collapse
-      form.navbar-form.navbar-right
-        .form-group
-          input.form-control type="text" placeholder="Email"
-        .form-group
-          input.form-control type="password" placeholder="Password"
-        button.btn.btn-success type="submit" Sign in
+      - if user_signed_in?
+        = form_for current_user, url: destroy_user_session_path, html: { method: :delete, class: 'navbar-form navbar-right' } do |f|
+          p.navbar-text = current_user.email
+          = f.submit 'Sign out', class: 'btn btn-danger navbar-btn', data: { disable_with: 'Signing out...'}
+      - else
+        = form_for :user, url: user_session_path, html: { class: 'navbar-form navbar-right' } do |f|
+          .form-group
+            = f.text_field :email, placeholder: 'Email', autofocus: true, class: 'form-control'
+          .form-group
+            = f.password_field :password, placeholder: 'Password', class: 'form-control'
+          = f.submit 'Sign in', class: 'btn btn-success', data: { disable_with: 'Signing in...' }
