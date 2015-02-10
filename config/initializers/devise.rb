@@ -62,7 +62,8 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
-  # config.http_authenticatable_on_xhr = true
+  # disable this since we use authorization via ajax
+  config.http_authenticatable_on_xhr = false
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
@@ -256,4 +257,6 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  config.parent_controller = 'DeviseParentController'
 end

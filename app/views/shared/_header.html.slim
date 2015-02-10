@@ -1,4 +1,4 @@
-nav.navbar.navbar-inverse.navbar-fixed-top
+nav.navbar.navbar-inverse.navbar-fixed-top.js-header
   .container
     .navbar-header
       button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
@@ -11,11 +11,11 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         h4 style="display: inline-block" Fork and Pork
     #navbar.collapse.navbar-collapse
       - if user_signed_in?
-        = form_for current_user, url: destroy_user_session_path, html: { method: :delete, class: 'navbar-form navbar-right' } do |f|
+        = form_for resource, url: destroy_session_path(resource), html: { method: :delete, class: 'navbar-form navbar-right' } do |f|
           p.navbar-text = current_user.email
           = f.submit 'Sign out', class: 'btn btn-danger navbar-btn', data: { disable_with: 'Signing out...'}
       - else
-        = form_for :user, url: user_session_path, html: { class: 'navbar-form navbar-right' } do |f|
+        = form_for resource, as: resource_name, url: session_path(resource), remote: true, html: { class: 'navbar-form navbar-right' } do |f|
           .form-group
             = f.text_field :email, placeholder: 'Email', autofocus: true, class: 'form-control'
           .form-group
