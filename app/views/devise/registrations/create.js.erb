@@ -1,0 +1,9 @@
+<% if resource.errors.empty? %>
+    // refresh header
+    <%= render file: 'devise/sessions/new' %>
+    $('.jumbotron').slideUp('normal', function(){
+        $(this).remove();
+    });
+<% else %>
+    $('.js-registration-form').replaceWith('<%=j render 'devise/registrations/form' %>');
+<% end %>

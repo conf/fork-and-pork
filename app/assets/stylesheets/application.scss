@@ -28,9 +28,10 @@
   min-height: 66px;
 }
 
-.navbar-form {
+.navbar-form, .form-inline {
   margin: 10px auto;
   .form-group {
+    vertical-align: top;
     margin-right: 10px;
   }
 }

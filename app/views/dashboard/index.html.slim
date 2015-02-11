@@ -1,10 +1,10 @@
 - content_for :callout do
-  .jumbotron
-    .container
-      h1 Welcome to Fork and Pork!
-      p Best calorie counting application you ever seen!
-      p
-        a class="btn btn-info btn-lg" href="#" role="button" Register now!
+  - unless user_signed_in?
+    .jumbotron
+      .container
+        h1 Welcome to Fork and Pork!
+        p Best calorie counting application you ever seen!
+        = render 'devise/registrations/form'
 .row
   .col-md-4
     h2 Heading

@@ -1,0 +1,6 @@
+= simple_form_for resource, as: resource_name, url: registration_path(resource), remote: true,
+                  html: { class: 'form-inline js-registration-form' }, defaults: { input_html: { class: 'input-lg' } } do |f|
+  = f.input :email, label_html: { class: 'sr-only' }, placeholder: 'Email', autofocus: true
+  = f.input :password, label_html: { class: 'sr-only' }, placeholder: 'Password'
+  = f.input :password_confirmation, label_html: { class: 'sr-only' }, placeholder: 'Confirmation'
+  = f.button :submit, 'Register now!', data: { disable_with: 'Sending data...' }, class: 'btn-info btn-lg'
