@@ -36,6 +36,9 @@ gem 'devise'
 
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bootswatch-rails'
+
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,6 +51,7 @@ group :development, :test do
   gem 'spring-commands-rspec', require: false
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
 
   gem 'factory_girl_rails'
   gem 'rspec-rails'

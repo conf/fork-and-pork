@@ -14,9 +14,30 @@
  *= require_self
  */
 @import 'bootstrap-sprockets';
+
+@import 'bootswatch/slate/variables';
 @import 'bootstrap';
 
-body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+@import 'bootswatch/slate/bootswatch';
+
+.navbar {
+  margin-bottom: 0;
+}
+
+#navbar {
+  min-height: 66px;
+}
+
+.navbar-form {
+  margin: 10px auto;
+  .form-group {
+    margin-right: 10px;
+  }
+}
+
+.js-notices {
+  margin-bottom: 0;
+  .alert {
+    margin-bottom: 0;
+  }
 }

@@ -1,2 +1,6 @@
-p.notice =notice
-p.alert  =alert
+.js-notices
+  - { success: notice, danger: alert }.compact.each do |html_class, message|
+    p.alert.alert-dismissible role="alert" class="alert-#{html_class}"
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
+      = message
