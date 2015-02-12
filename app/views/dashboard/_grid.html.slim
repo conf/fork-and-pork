@@ -1,31 +1,24 @@
-= simple_form_for Meal.new do |f|
+h1 Meals
+= simple_form_for Meal.new(user: current_user), remote: true do |f|
   table.table.table-striped.table-hover.js-meals-grid
     thead
       tr
-        th.col-md-5 Details
+        th.col-md-4 Details
         th.col-md-1 Calories
         th.col-md-3 Date
-        th.col-md-1 Actions
+        th.col-md-2
     tbody
-      tr.info
-        td Apple
-        td 200
-        td Feb, 5 2015
-        td actions
-      tr.danger
-        td Banana
-        td 400
-        td Feb, 5 2015
-        td actions
-      tr.success
-        td Cucumber
-        td 100
-        td Feb, 5 2015
-        td actions
+      - current_user.meals.each do |meal|
+        tr
+          td= meal.details
+          td= meal.calories
+          td=l meal.created_at
+          td.actions
+            button.btn.btn-warning Edit
+            button.btn.btn-danger Delete
       tr.info
         td = f.input :details, as: :text, label: false, placeholder: 'Pork on a Fork'
         td = f.input :calories, label: false, placeholder: '100'
         td = f.input :created_at, as: :date_time_picker, label: false, value: Time.current
         td = f.submit 'Submit', class: 'btn btn-default'
-button.btn.btn-success.pull-right.js-add-meal
-  | Add Meal
+button.btn.btn-success.pull-right.js-add-meal Add Meal

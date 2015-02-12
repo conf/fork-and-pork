@@ -5,6 +5,6 @@
         h1 Welcome to Fork and Pork!
         p Best calorie counting application you ever seen!
         = render 'devise/registrations/form'
-.row
-  = render 'grid'
+.row.grid
+  = render 'grid' if user_signed_in?
 hr
