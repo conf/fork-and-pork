@@ -32,6 +32,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'devise'
+
+gem 'slim-rails'
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bootswatch-rails'
+
+gem 'simple_form'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
@@ -43,6 +51,7 @@ group :development, :test do
   gem 'spring-commands-rspec', require: false
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
 
   gem 'factory_girl_rails'
   gem 'rspec-rails'
@@ -59,6 +68,6 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
 end
 

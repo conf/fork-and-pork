@@ -10,6 +10,35 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *
  *= require_self
  */
+@import 'bootstrap-sprockets';
+
+@import 'bootswatch/slate/variables';
+@import 'bootstrap';
+
+@import 'bootswatch/slate/bootswatch';
+
+.navbar {
+  margin-bottom: 0;
+}
+
+#navbar {
+  min-height: 66px;
+}
+
+.navbar-form, .form-inline {
+  margin: 10px auto;
+  .form-group {
+    vertical-align: top;
+    margin-right: 10px;
+  }
+}
+
+.js-notices {
+  margin-bottom: 0;
+  .alert {
+    margin-bottom: 0;
+  }
+}
