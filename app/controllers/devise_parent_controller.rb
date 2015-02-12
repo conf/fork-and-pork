@@ -1,3 +1,3 @@
 class DeviseParentController < ApplicationController
-  respond_to :js
+  respond_to :js, :json
 end
