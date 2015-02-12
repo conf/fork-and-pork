@@ -38,6 +38,8 @@ gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'bootswatch-rails'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 gem 'simple_form'
 
 group :development, :test do
