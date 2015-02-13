@@ -39,14 +39,14 @@ RSpec.describe 'Meals', type: :request do
 
       describe 'single meal' do
         it 'should get a single meal' do
-          get meal_path(meal), format: :json, meal: { id: meal.id }
+          get meal_path(meal), format: :json
           assert_response :success
           expect(json_response).to be_a(Hash)
           expect(json_response[:id]).to eq meal.id
         end
 
         it 'should return 404 when no meal exists' do
-          expect { get meal_path(meal), format: :json, meal: { id: -1 } }.to raise_error ActiveRecord::RecordNotFound
+          expect { get meal_path(id: -1), format: :json }.to raise_error ActiveRecord::RecordNotFound
         end
       end
 
@@ -68,7 +68,7 @@ RSpec.describe 'Meals', type: :request do
       end
 
       it 'should destroy a meal' do
-        delete meal_path(meal), format: :json, meal: { id: meal.id }
+        delete meal_path(meal), format: :json
         assert_response :no_content
         expect { meal.reload }.to raise_error ActiveRecord::RecordNotFound
       end

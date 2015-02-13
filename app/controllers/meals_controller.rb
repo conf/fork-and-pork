@@ -9,7 +9,7 @@ class MealsController < ApplicationController
   end
 
   def show
-    respond_with current_user.meals.find_by!(id: meal_params[:id])
+    respond_with current_user.meals.find(params[:id])
   end
 
   def create
@@ -18,13 +18,13 @@ class MealsController < ApplicationController
   end
 
   def update
-    meal = current_user.meals.find_by!(id: meal_params_for_update[:id])
+    meal = current_user.meals.find(params[:id])
     meal.update(meal_params_for_update)
     respond_with meal
   end
 
   def destroy
-    meal = current_user.meals.find_by!(id: meal_params_for_update[:id])
+    meal = current_user.meals.find(params[:id])
     meal.destroy
     respond_with meal
   end
@@ -32,7 +32,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:id, :details, :calories, :user_id, :created_at)
+    params.require(:meal).permit(:details, :calories, :user_id, :created_at)
   end
 
   def meal_params_for_update
