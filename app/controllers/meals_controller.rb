@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :find_meal!, only: [:show, :update, :destroy]
+  before_filter :find_meal!, only: [:edit, :show, :update, :destroy]
 
   respond_to :js, :json
 
@@ -9,7 +9,16 @@ class MealsController < ApplicationController
     respond_with current_user.meals
   end
 
+  def new
+    @meal = Meal.new(user: current_user)
+    respond_with @meal
+  end
+
   def show
+    respond_with @meal
+  end
+
+  def edit
     respond_with @meal
   end
 

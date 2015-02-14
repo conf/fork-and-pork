@@ -18,6 +18,6 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
-$('.container').on('click', '.js-add-meal, tr.add-meal button.close', function(){
-   $('.js-meals-grid tr.add-meal').toggleClass('hidden');
+$('.container').on('click', 'tr.add-meal button.close', function() {
+    $(this).closest('tr.add-meal').prev('tr.hidden').andSelf().toggleClass('hidden');
 });

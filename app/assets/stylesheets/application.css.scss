@@ -46,7 +46,8 @@
 }
 
 .actions {
-  button + button {
-    margin-left: 10px;
+  form.form-inline {
+    display: inline-block;
+    margin-right: 10px;
   }
 }

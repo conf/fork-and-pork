@@ -3,6 +3,5 @@ tr data-id="#{meal.id}"
   td.calories= meal.calories
   td.created_at=l meal.created_at
   td.actions
-    = simple_form_for meal, method: :delete, remote: true do |f|
-      button.btn.btn-warning.js-edit type="button" Edit
-      button.btn.btn-danger data-confirm="Are you sure?" Delete
+    = button_to 'Edit', edit_meal_path(meal), method: :get, remote: true, class: 'btn btn-warning', form_class: 'form-inline'
+    = button_to 'Delete', meal, method: :delete, remote: true, class: 'btn btn-danger', form_class: 'form-inline', data: { confirm: 'Are you sure?' }

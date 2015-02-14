@@ -6,6 +6,11 @@ class DateTimePickerInput < SimpleForm::Inputs::Base
     end
   end
 
+  def input_html_options
+    value = object[attribute_name]
+    value ? super.merge(value: l(value)) : super
+  end
+
   def span_table
     template.content_tag(:span, class: 'input-group-addon') do
       template.concat icon_table

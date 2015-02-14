@@ -1,0 +1,5 @@
+<%= render 'meals/form', meal: @meal %>
+
+$('.js-meals-grid tr.add-meal button.close').trigger('click');
+$('.js-meals-grid tr:last').after($('.js-meals-grid tr.add-meal').removeClass('hidden'));
+$('.js-meals-grid tr.add-meal form').get(0).reset();
