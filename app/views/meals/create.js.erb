@@ -1,0 +1,12 @@
+<% if @meal.errors.any? %>
+    <%= render 'meals/new', meal: @meal %>
+<% else %>
+    <%= render 'meals/new', meal: Meal.new(user: current_user) %>
+    $('.js-meals-grid tr.add-meal')
+            .before('<%=j render @meal %>')
+            .find('form textarea:first')
+                .focus()
+            .closest('form')
+            .get(0)
+            .reset();
+<% end %>

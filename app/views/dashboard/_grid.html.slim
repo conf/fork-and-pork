@@ -1,24 +1,23 @@
-h1 Meals
-= simple_form_for Meal.new(user: current_user), remote: true do |f|
-  table.table.table-striped.table-hover.js-meals-grid
-    thead
-      tr
-        th.col-md-4 Details
-        th.col-md-1 Calories
-        th.col-md-3 Date
-        th.col-md-2
-    tbody
-      - current_user.meals.each do |meal|
-        tr
-          td= meal.details
-          td= meal.calories
-          td=l meal.created_at
-          td.actions
-            button.btn.btn-warning Edit
-            button.btn.btn-danger Delete
-      tr.info
-        td = f.input :details, as: :text, label: false, placeholder: 'Pork on a Fork'
-        td = f.input :calories, label: false, placeholder: '100'
-        td = f.input :created_at, as: :date_time_picker, label: false, value: Time.current
-        td = f.submit 'Submit', class: 'btn btn-default'
+table.table.table-striped.table-hover.js-meals-grid
+  thead
+    tr
+      th.col-md-4 Details
+      th.col-md-2 Calories
+      th.col-md-4 Date
+      th.col-md-2 Actions
+  tbody
+    = render current_user.meals
+      /tr.hidden
+        td colspan="4"
+          = simple_form_for meal, remote: true, class: 'hidden' do |f|
+            .col-md-4= f.input :details, as: :text, label: false, placeholder: 'Pork on a Fork'
+            .col-md-2= f.input :calories, label: false, placeholder: '100'
+            .col-md-4= f.input :created_at, as: :date_time_picker, label: false, value: Time.current
+            .col-md-2= f.submit 'Submit', class: 'btn btn-default'
+    = render 'meals/new', meal: Meal.new(user: current_user)
+    /tr.info
+      td = f.input :details, as: :text, label: false, placeholder: 'Pork on a Fork'
+      td = f.input :calories, label: false, placeholder: '100'
+      td = f.input :created_at, as: :date_time_picker, label: false, value: Time.current
+      td = f.submit 'Submit', class: 'btn btn-default'
 button.btn.btn-success.pull-right.js-add-meal Add Meal

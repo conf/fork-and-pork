@@ -1,0 +1,8 @@
+tr data-id="#{meal.id}"
+  td.details= meal.details
+  td.calories= meal.calories
+  td.created_at=l meal.created_at
+  td.actions
+    = simple_form_for meal, method: :delete, remote: true do |f|
+      button.btn.btn-warning.js-edit type="button" Edit
+      button.btn.btn-danger data-confirm="Are you sure?" Delete
