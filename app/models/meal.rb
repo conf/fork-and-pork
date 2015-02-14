@@ -11,4 +11,8 @@ class Meal < ActiveRecord::Base
     self.created_at ||= Time.current
   end
 
+  def diet?
+    user.calories ? calories < user.calories : true
+  end
+
 end

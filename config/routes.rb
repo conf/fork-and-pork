@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  get :calories, to: 'calories#calories'
+  patch :calories, to: 'calories#update'
+
   root 'dashboard#index'
 
   resources :meals
