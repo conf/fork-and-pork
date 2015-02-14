@@ -20,6 +20,8 @@
 
 @import 'bootswatch/slate/bootswatch';
 
+@import 'bootstrap-datetimepicker';
+
 .navbar {
   margin-bottom: 0;
 }
@@ -40,5 +42,12 @@
   margin-bottom: 0;
   .alert {
     margin-bottom: 0;
+  }
+}
+
+.actions {
+  form.form-inline {
+    display: inline-block;
+    margin-right: 10px;
   }
 }

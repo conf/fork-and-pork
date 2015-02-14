@@ -14,27 +14,23 @@ RSpec.describe "Authorization", type: :request do
     post user_session_path, format: :json, user: user
   end
 
-  def parsed_response
-    JSON.parse(response.body)
-  end
-
   it 'logs user in' do
     login_user
-    expect(response).to have_http_status(201)
-    expect(parsed_response['email']).to eq 'user@example.com'
+    assert_response :created
+    expect(json_response).to include email: 'user@example.com'
   end
 
   context 'returns error' do
     it 'when user is not found' do
       login_user(user_invalid_email)
-      expect(response).to have_http_status(401)
-      expect(parsed_response['error']).to eq 'Invalid email or password.'
+      assert_response :unauthorized
+      expect(json_response).to eq error: 'Invalid email or password.'
     end
 
     it 'when password is incorrect' do
       login_user(user_invalid_password)
-      expect(response).to have_http_status(401)
-      expect(parsed_response['error']).to eq 'Invalid email or password.'
+      assert_response :unauthorized
+      expect(json_response).to eq error: 'Invalid email or password.'
     end
   end
 end

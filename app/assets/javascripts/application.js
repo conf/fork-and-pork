@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require 'moment'
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+$('.container').on('click', 'tr.add-meal button.close', function() {
+    $(this).closest('tr.add-meal').prev('tr.hidden').andSelf().toggleClass('hidden');
+});

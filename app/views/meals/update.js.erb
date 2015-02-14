@@ -1,0 +1,8 @@
+<% if @meal.errors.any? %>
+    <%= render 'meals/form', meal: @meal %>
+<% else %>
+    $('.js-meals-grid tr[data-id="<%= @meal.id %>"]').replaceWith('<%=j render @meal %>'); // update edited row
+    <%= render 'meals/form', meal: Meal.new(user: current_user) %>
+    $('.js-meals-grid tr.add-meal form').get(0).reset();
+    $('.js-meals-grid tr.add-meal').addClass('hidden'); // hide form
+<% end %>

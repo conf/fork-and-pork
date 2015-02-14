@@ -1,0 +1,3 @@
+<%= render 'meals/form', meal: @meal %>
+$('.js-meals-grid tr').removeClass('hidden');
+$('.js-meals-grid tr[data-id="<%= @meal.id %>"]').after($('tr.add-meal')).toggleClass('hidden');

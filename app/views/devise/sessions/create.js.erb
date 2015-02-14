@@ -1,2 +1,6 @@
 $('.js-header').replaceWith('<%=j render 'shared/header' %>');
 $('.js-notices').replaceWith('<%=j render 'shared/notices' %>');
+$('.jumbotron').slideUp(function(){
+    $(this).remove();
+});
+$('.grid').replaceWith('<%=j render file: 'dashboard/index' %>');
