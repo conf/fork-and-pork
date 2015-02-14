@@ -8,4 +8,4 @@ table.table.table-striped.table-hover.js-meals-grid
   tbody
     = render partial: 'meals/meal', collection: current_user.meals
     = render 'meals/form.html.slim', meal: Meal.new(user: current_user)
-= button_to 'Add Meal', new_meal_path, method: :get, remote: true, class: 'btn btn-success pull-right js-add-meal'
+= button_to 'Add Meal', new_meal_path, method: :get, remote: true, class: 'btn btn-success btn-lg pull-right js-add-meal'

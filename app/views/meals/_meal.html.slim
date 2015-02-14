@@ -1,4 +1,4 @@
-tr data-id="#{meal.id}"
+tr data-id="#{meal.id}" class="#{meal.diet? ? :success : :danger}"
   td.details= meal.details
   td.calories= meal.calories
   td.created_at=l meal.created_at
