@@ -1,8 +1,8 @@
 tr.info.add-meal.hidden
   td colspan="4"
     = simple_form_for meal, remote: true do |f|
-      .col-md-4= f.input :details, as: :text, label: false, placeholder: 'Pork on a Fork'
-      .col-md-2= f.input :calories, label: false, placeholder: '100'
+      .col-md-4= f.input :details, as: :string, label: false, placeholder: 'Pork on a Fork'
+      .col-md-2= f.input :calories, label: false, placeholder: 'Calories, e.g., 100'
       .col-md-4= f.input :created_at, as: :date_time_picker, label: false, placeholder: 'Date and time (optional)'
       .col-md-2
         = f.submit 'Submit', class: 'btn btn-default'

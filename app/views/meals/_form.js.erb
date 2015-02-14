@@ -1,4 +1,4 @@
 var addMealRow = $('.js-meals-grid tr.add-meal');
 addMealRow.replaceWith('<%=j render 'meals/form.html.slim', meal: meal %>'); // render new form
 $('.js-meals-grid tr.add-meal').removeClass('hidden'); // show it
-addMealRow.find('form textarea:first').focus(); // focus first input
+addMealRow.find('form :input:visible:first').focus(); // focus first input
