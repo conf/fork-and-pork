@@ -21,3 +21,10 @@
 $('.container').on('click', 'tr.add-meal button.close', function() {
     $(this).closest('tr.add-meal').prev('tr.hidden').andSelf().toggleClass('hidden');
 });
+
+$('.js-filter-form :reset').click(function(e){
+    e.preventDefault();
+
+    this.form.reset();
+    $(this.form).find(':submit').click();
+});

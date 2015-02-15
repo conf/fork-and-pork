@@ -1,0 +1,8 @@
+= simple_form_for :filter_meals, url: meals_path, method: :get, remote: true, html: { class: 'form-inline js-filter-form' } do |f|
+  .well
+    = f.input :from, as: :date_time_picker, label: false, placeholder: 'From', wrapper_html: { data: { format: 'date', link_to: '.filter_meals_to .form_datetime', link_min: true } }
+    = f.input :to, as: :date_time_picker, label: false, placeholder: 'To',     wrapper_html: { data: { format: 'date', link_to: '.filter_meals_from .form_datetime', link_max: true } }
+    = f.input :from_time, as: :date_time_picker, label: false, placeholder: 'From Time', wrapper_html: { data: { format: 'time', link_to: '.filter_meals_to_time .form_datetime', link_min: true } }
+    = f.input :to_time, as: :date_time_picker, label: false, placeholder: 'To Time', wrapper_html: { data: { format: 'time', link_to: '.filter_meals_from_time .form_datetime', link_max: true } }
+    = f.submit 'Filter', class: 'btn btn-success'
+    = f.submit 'Reset', class: 'btn btn-default', style: 'margin-left: 10px', type: :reset

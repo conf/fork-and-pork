@@ -7,12 +7,25 @@ class Meal < ActiveRecord::Base
 
   before_validation :set_created_at
 
+  def self.filter_by_date(options)
+    collection = all
+    collection = collection.where('DATE(created_at) >= ?', options[:from]) if options[:from].present?
+    collection = collection.where('DATE(created_at) <= ?', options[:to]) if options[:to].present?
+    collection = collection.where('created_at::time >= ?', options[:from_time]) if options[:from_time].present?
+    collection = collection.where('created_at::time <= ?', options[:to_time]) if options[:to_time].present?
+    collection
+  end
+
+  def self.sorted
+    order(:created_at)
+  end
+
   def set_created_at
     self.created_at ||= Time.current
   end
 
   def same_day_meals
-    user.meals.where('DATE(created_at) = ?', created_at.to_date).order(:created_at)
+    user.meals.where('DATE(created_at) = ?', created_at.to_date).sorted
   end
 
   def diet?

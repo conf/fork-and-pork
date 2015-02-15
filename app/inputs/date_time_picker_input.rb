@@ -7,7 +7,7 @@ class DateTimePickerInput < SimpleForm::Inputs::Base
   end
 
   def input_html_options
-    value = object[attribute_name]
+    value = object.try(:[], attribute_name)
     value ? super.merge(value: l(value)) : super
   end
 
