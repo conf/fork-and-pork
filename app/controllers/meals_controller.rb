@@ -28,7 +28,7 @@ class MealsController < ApplicationController
   end
 
   def update
-    @meal.update(meal_params_for_update)
+    @meal.update(meal_params)
     respond_with @meal
   end
 
@@ -44,11 +44,6 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:details, :calories, :user_id, :created_at)
+    params.require(:meal).permit(:details, :calories, :created_at)
   end
-
-  def meal_params_for_update
-    meal_params.except(:user_id)
-  end
-
 end
