@@ -34,5 +34,8 @@ module ForkAndPork
     # render authenticity token in remote forms when rendered via ajax
     # so subsequent non-GET ajax requests will work correctly
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
+    config.autoload_paths += %W(#{config.root}/decorators)
+
   end
 end
