@@ -49,7 +49,7 @@ class MealsController < ApplicationController
   end
 
   def meals_filter_by_date_params
-    params.require(:filter_meals).permit(:from, :to, :from_time, :to_time)
+    params.permit(filter_meals: [:from, :to, :from_time, :to_time]).fetch(:filter_meals, {})
   end
 
 end
