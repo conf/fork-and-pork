@@ -6,7 +6,8 @@ class MealsController < ApplicationController
   respond_to :js, :json
 
   def index
-    respond_with current_user.meals
+    @meals = current_user.meals.filter_by_date(meals_filter_by_date_params).sorted
+    respond_with @meals
   end
 
   def new
@@ -28,7 +29,7 @@ class MealsController < ApplicationController
   end
 
   def update
-    @meal.update(meal_params_for_update)
+    @meal.update(meal_params)
     respond_with @meal
   end
 
@@ -44,11 +45,11 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:details, :calories, :user_id, :created_at)
+    params.require(:meal).permit(:details, :calories, :created_at)
   end
 
-  def meal_params_for_update
-    meal_params.except(:user_id)
+  def meals_filter_by_date_params
+    params.permit(filter_meals: [:from, :to, :from_time, :to_time]).fetch(:filter_meals, {})
   end
 
 end
