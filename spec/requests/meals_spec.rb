@@ -12,9 +12,10 @@ RSpec.describe 'Meals', type: :request do
   describe 'json' do
 
     describe 'on creation' do
-      it 'should create meal on success' do
+      it 'should return created meal on success' do
         post meals_path, format: :json, meal: valid_meal.attributes
-        assert_response :created
+        assert_response :success
+        expect(json_response[:diet]).to be false
       end
 
       it 'should return errors on fail' do
@@ -27,15 +28,16 @@ RSpec.describe 'Meals', type: :request do
 
     describe 'information retrieval' do
 
-      let!(:meals) { FactoryGirl.create_list(:meal, 3, user: user) }
+      let!(:meals) { FactoryGirl.create_list(:meal, 3, user: user, calories: 100) }
       let(:meal) { meals.first }
 
       describe 'single meal' do
-        it 'should get a single meal' do
+        it 'should get a single meal with diet attribute set' do
           get meal_path(meal), format: :json
           assert_response :success
           expect(json_response).to be_a(Hash)
           expect(json_response[:id]).to eq meal.id
+          expect(json_response[:diet]).to be true
         end
 
         it 'should return 404 when no meal exists' do
