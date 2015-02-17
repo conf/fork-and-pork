@@ -13,6 +13,7 @@ class MealDecorator < SimpleDelegator
   end
 
   def self.decorate_with_diet(collection)
+    return [] if collection.blank?
     grouped = collection.group_by { |meal| "#{meal.user_id}_#{meal.created_at.to_date}" }
     grouped.map do |_, meals_per_user_per_date|
       eaten_calories_per_date = 0

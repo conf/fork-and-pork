@@ -4,3 +4,4 @@ $('.jumbotron').slideUp(function(){
     $(this).remove();
 });
 $('.grid').replaceWith('<%=j render file: 'dashboard/index' %>');
+$('.js-filter-form :submit').click(); // refresh main grid
