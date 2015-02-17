@@ -9,7 +9,7 @@ class CaloriesController < ApplicationController
 
   def update
     current_user.update(calories_params)
-    flash.notice = 'Successfully updated calories!' unless current_user.errors.any?
+    flash.now[:notice] = 'Successfully updated calories!' unless current_user.errors.any?
     respond_with current_user
   end
 
