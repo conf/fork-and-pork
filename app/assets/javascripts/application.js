@@ -22,7 +22,7 @@ $('.container').on('click', 'tr.add-meal button.close', function() {
     $(this).closest('tr.add-meal').prev('tr.hidden').andSelf().toggleClass('hidden');
 });
 
-$('.js-filter-form :reset').click(function(e){
+$('.container').on('click', '.js-filter-form :reset', function(e) {
     e.preventDefault();
 
     this.form.reset();
